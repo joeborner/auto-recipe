@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current release version of kpkg.</string>
+	<key>Identifier</key>
+    	<string>io.kandji.pkg.kpkg</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>kpkg</string>
+	</dict>
+	<key>Process</key>
+	<array>
+        <dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://github.com/kandji-inc/kpkg/releases/latest</string>
+				<key>re_pattern</key>
+				<string>https://github.com/kandji-inc/kpkg/releases/download/[0-9.]+/kpkg_[0-9.]+.pkg</string>
+				<key>result_output_var_name</key>
+				<string>url</string>				
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%url%</string>
+				<key>filename</key>
+				<string>%NAME%.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+    </array>
+</dict>
+</plist>
