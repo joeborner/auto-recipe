@@ -19,7 +19,7 @@
 				<key>url</key>
 				<string>https://github.com/kandji-inc/kpkg/releases</string>
 				<key>re_pattern</key>
-				<string>https://github.com/kandji-inc/kpkg/releases/download/[0-9.]+/kpkg_[0-9.]+.pkg</string>
+				<string>https://github.com/kandji-inc/kpkg/releases/download/[0-9.]+/kpkg-[0-9.]+.pkg</string>
 				<key>result_output_var_name</key>
 				<string>url</string>				
 			</dict>
