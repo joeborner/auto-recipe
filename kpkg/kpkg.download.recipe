@@ -3,25 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current release version of kpkg.</string>
+	<string>Downloads the current release version of Azure Data Studio.</string>
 	<key>Identifier</key>
-    	<string>io.kandji.pkg.kpkg</string>
+    	<string>com.github.Mac-Seven.download.AzureDataStudio</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>kpkg</string>
+		<string>Azure Data Studio</string>
 	</dict>
 	<key>Process</key>
 	<array>
         <dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>https://github.com/kandji-inc/kpkg/releases</string>
 				<key>re_pattern</key>
-				<string>https://github.com/kandji-inc/kpkg/releases/download/[0-9.]+/kpkg-[0-9.]+.pkg</string>
+				<string>kpkg-([0-9\.]+).pkg</string>
 				<key>result_output_var_name</key>
-				<string>url</string>				
+				<string>url</string>
+				<key>url</key>
+				<string>https://github.com/kandji-inc/kpkg/releases/latest</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -29,10 +29,10 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%url%</string>
 				<key>filename</key>
 				<string>%NAME%.pkg</string>
+				<key>url</key>
+				<string>https://github.com/kandji-inc/kpkg/releases/download/%url%/kpkg-%url%.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
