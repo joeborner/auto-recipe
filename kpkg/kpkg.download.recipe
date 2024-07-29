@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current release version of Azure Data Studio.</string>
+	<string>Downloads the current release version of kpkg.</string>
 	<key>Identifier</key>
-    	<string>com.github.Mac-Seven.download.AzureDataStudio</string>
+    	<string>io.kandji.pkg.kpkg</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Azure Data Studio</string>
+		<string>kpkg</string>
 	</dict>
 	<key>Process</key>
 	<array>
