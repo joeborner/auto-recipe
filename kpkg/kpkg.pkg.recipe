@@ -2,97 +2,45 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the latest version of Filezilla and turns it into a package.</string>
-    <key>Identifier</key>
-    <string>com.github.Mac-Seven.pkg.FileZilla</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>FileZilla</string>
-    </dict>
-    <key>ParentRecipe</key>
-    <string>com.github.Mac-Seven.download.FileZilla</string>
-    <key>Process</key>
-    	<array>
+	<key>Description</key>
+	<string>Downloads the current release version of kpkg.</string>
+	<key>Identifier</key>
+    	<string>io.kandji.pkg.kpkg</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>kpkg</string>
+	</dict>
+	<key>Process</key>
+	<array>
         <dict>
-            <key>Processor</key>
-            <string>Unarchiver</string>
-            <key>Arguments</key>
-            <dict>
-                <key>archive_path</key>
-                <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.tar.bz2</string>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/unzip</string>
-                <key>purge_destination</key>
-                <true/>
-            </dict>
-        </dict>
-        <dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgdirs</key>
-				<dict>
-					<key>Applications</key>
-					<string>0775</string>
-				</dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>re_pattern</key>
+				<string>v([0-9\.]+)</string>
+				<key>result_output_var_name</key>
+				<string>URL</string>
+				<key>url</key>
+				<string>https://github.com/kandji-inc/kpkg/releases/latest</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
-			<string>Copier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>destination_path</key>
-				<string>%pkgroot%/Applications/%NAME%.app</string>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unzip/%NAME%.app</string>
-			</dict>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Applications/%NAME%.app/Contents/Info.plist</string>
-				<key>plist_version_key</key>
-				<string>CFBundleShortVersionString</string>
+				<key>filename</key>
+				<string>%NAME%-%URL%.pkg</string>
+				<key>url</key>
+				<string>https://github.com/kandji-inc/kpkg/releases/download/%URL%/kpkg-%URL%.pkg</string>
 			</dict>
 			<key>Processor</key>
-			<string>Versioner</string>
+			<string>URLDownloader</string>
 		</dict>
-        <dict>
+		<dict>
 			<key>Processor</key>
-			<string>PkgCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_request</key>
-				<dict>
-					<key>chown</key>
-					<array>
-						<dict>
-							<key>group</key>
-							<string>admin</string>
-							<key>path</key>
-							<string>Applications</string>
-							<key>user</key>
-							<string>root</string>
-						</dict>
-					</array>
-					<key>id</key>
-					<string>org.filezilla-project.filezilla</string>
-					<key>options</key>
-					<string>purge_ds_store</string>
-					<key>pkgdir</key>
-					<string>%RECIPE_CACHE_DIR%</string>
-					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
-				</dict>
-			</dict>
+			<string>EndOfCheckPhase</string>
 		</dict>
-	</array>
+    </array>
 </dict>
 </plist>
