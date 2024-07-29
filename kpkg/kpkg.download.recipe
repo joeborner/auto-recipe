@@ -19,9 +19,9 @@
 				<key>re_pattern</key>
 				<string>v([0-9\.]+)</string>
 				<key>result_output_var_name</key>
-				<string>url</string>
+				<string>URL</string>
 				<key>url</key>
-				<string>https://github.com/kandji-inc/kpkg/releases/tag/1.1.0</string>
+				<string>https://github.com/kandji-inc/kpkg/releases/latest</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -30,9 +30,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%.pkg</string>
+				<string>%NAME%-%URL%.pkg</string>
 				<key>url</key>
-				<string>https://github.com/kandji-inc/kpkg/releases/download/%url%/kpkg-%url%.pkg</string>
+				<string>https://github.com/kandji-inc/kpkg/releases/download/%URL%/kpkg-%URL%.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
