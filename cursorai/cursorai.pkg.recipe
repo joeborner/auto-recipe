@@ -5,11 +5,11 @@
 	<key>Description</key>
 	<string>Downloads the current release version of Cursor AI.</string>
 	<key>Identifier</key>
-    	<string>com.github.joeborner.pkg.cursorAI</string>
+    	<string>com.github.joeborner.pkg.cursorai</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Cursor AI</string>
+		<string>cursorai</string>
 	</dict>
 	<key>Process</key>
 	<array>
