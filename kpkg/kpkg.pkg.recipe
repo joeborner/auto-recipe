@@ -43,9 +43,9 @@
 	            <key>Arguments</key>
 	            <dict>
 	                <key>source_path</key>
-	                <string>%pkgroot%/downloads</string>
+	                <string>%pkgroot%/downloads/%NAME%-%VERSION%.pkg</string>
 	                <key>destination_path</key>
-	                <string>%pkgroot%</string>
+	                <string>%pkgroot%/%NAME%-%VERSION%.pkg</string>
 	            </dict>
 	        </dict>
 		<dict>
